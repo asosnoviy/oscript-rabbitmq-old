@@ -41,12 +41,11 @@ namespace oscriptcomponent
         /// Получить текстовое сообщение из очереди
         /// </summary>
         /// <param name="queueName"></param>
-        /// <param name="noAck"></param>
         /// <returns></returns>
         [ContextMethod("ПолучитьСтроку")]
-        public string GetString(string queueName, bool noAck)
+        public string GetString(string queueName)
         {
-            BasicGetResult result = _rmqModel.BasicGet(queueName, noAck);
+            BasicGetResult result = _rmqModel.BasicGet(queueName, true);
 
             string message = "";
 
