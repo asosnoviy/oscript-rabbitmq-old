@@ -47,7 +47,7 @@ namespace oscriptcomponent
         /// Получить текстовое сообщение из очереди.
         /// </summary>
         /// <param name="queueName">Имя очереди</param>
-        /// <returns></returns>
+        /// <returns>Текст сообщения</returns>
         [ContextMethod("ПолучитьСтроку")]
         public string GetString(string queueName)
         {
