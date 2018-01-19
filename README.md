@@ -1,5 +1,7 @@
 # OneScript RabbitMQ
 
+[![Build status](https://ci.appveyor.com/api/projects/status/kbqiv9rsp1ohghqb/branch/master?svg=true)](https://ci.appveyor.com/project/nixel2007/oscript-rabbitmq/branch/master)
+
 ## Поддержка RabbitMQ для OneScript
 
 ## Установка
