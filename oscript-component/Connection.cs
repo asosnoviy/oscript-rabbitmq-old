@@ -5,7 +5,7 @@ using RabbitMQ.Client;
 namespace oscriptcomponent
 {
 	/// <summary>
-	/// Класс Соединение
+	/// Класс СоединениеRMQ. Служит для подключения к серверу RabbitMQ и получения клиента управления.
 	/// </summary>
 	[ContextClass("СоединениеRMQ", "ConnectionRMQ")]
 	public class Connection : AutoContext<Connection>
@@ -18,41 +18,42 @@ namespace oscriptcomponent
 		private IConnection RmqConnection;
 
 		/// <summary>
-		/// Пользователь
+		/// Пользователь.
 		/// </summary>
 		[ContextProperty("Пользователь")]
 		public string User { get; set; }
 
 		
 		/// <summary>
-		/// 
+		/// Пароль пользователя.
 		/// </summary>
 		[ContextProperty("Пароль")]
 		public string Pass { get; set; }
 
 		/// <summary>
-		/// 
+		/// Виртуальный хост (vhost).
 		/// </summary>
 		[ContextProperty("ВиртуальныйХост")]
 		public string Vhost { get; set; }
 	
 		
 		/// <summary>
-		/// 
+		/// Адрес сервера - hostname или ip-адрес.
 		/// </summary>
 		[ContextProperty("Сервер")]
 		public string Host { get; set; }
 		
 		/// <summary>
-		/// Порт
+		/// Порт.
 		/// </summary>
 		[ContextProperty("Порт")]
 		public int Port { get; set; }
 		
 		/// <summary>
-		/// Установить соединение
+		/// Установить соединение с сервером RabbitMQ.
+		/// Возвращает клиент управления.
 		/// </summary>
-		/// <returns>Экземпляр КлиентRMQ</returns>
+		/// <returns>КлиентRMQ</returns>
 		[ContextMethod("Установить")]
 		public AmqpLib Create()
 		{
@@ -72,22 +73,20 @@ namespace oscriptcomponent
 		}
 		
 		/// <summary>
-		/// Закрыть соединение
+		/// Закрыть соединение.
 		/// </summary>
 		[ContextMethod("Закрыть")]
 		public void Close()
 		{
-		
 			RmqConnection.Close();
-			
 		}
 		
 		/// <summary>
-		/// Конструктор нового соединения
+		/// По умолчанию
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>СоединениеRMQ</returns>
 		[ScriptConstructor]
-		public static IRuntimeContextInstance Constructor()
+		public static Connection Constructor()
 		{
 			return new Connection();
 		}

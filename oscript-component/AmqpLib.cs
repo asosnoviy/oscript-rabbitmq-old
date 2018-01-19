@@ -4,7 +4,7 @@ using ScriptEngine.Machine.Contexts;
 namespace oscriptcomponent
 {
     /// <summary>
-    /// Класс для работы с RabbitMQ
+    /// Клиент управления RabbitMQ
     /// </summary>
     [ContextClass("КлиентRMQ")]
     public class AmqpLib : AutoContext<AmqpLib>
@@ -16,6 +16,12 @@ namespace oscriptcomponent
             _rmqModel = rmqModel;
         }
 
+        /// <summary>
+        /// Отправить сообщение в виде строки в указанную точку обмена. 
+        /// </summary>
+        /// <param name="messageText">Текст сообщения</param>
+        /// <param name="exchangeName">Имя точки обмена</param>
+        /// <param name="routingKey">Ключ маршрутизации</param>
         [ContextMethod("ОтправитьСтроку")]
         public void PublishString(string messageText, string exchangeName, string routingKey = "")
         {
@@ -25,7 +31,7 @@ namespace oscriptcomponent
             }
 
             // todo
-            byte deliveryMode = 2;
+            const byte deliveryMode = 2;
 
             byte[] messageBodyBytes = System.Text.Encoding.UTF8.GetBytes(messageText);
 
@@ -38,9 +44,9 @@ namespace oscriptcomponent
         }
 
         /// <summary>
-        /// Получить текстовое сообщение из очереди
+        /// Получить текстовое сообщение из очереди.
         /// </summary>
-        /// <param name="queueName"></param>
+        /// <param name="queueName">Имя очереди</param>
         /// <returns></returns>
         [ContextMethod("ПолучитьСтроку")]
         public string GetString(string queueName)
