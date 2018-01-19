@@ -10,6 +10,12 @@
 
 `opm install rabbitmq`
 
+### С релизов GitHub
+
+1. Перейти на [страницу релизов](https://github.com/silverbulleters/oscript-rabbitmq/releases)
+1. Скачать артефакт RabbitMQ-x.y.z.ospx
+1. Установить с помощью opm: `opm install -f RabbitMQ-x.y.z.ospx`
+
 ### С AppVeyor
 
 1. Перейти на страницу [последней сборки](https://ci.appveyor.com/project/nixel2007/oscript-rabbitmq) или [истории сборок](https://ci.appveyor.com/project/nixel2007/oscript-rabbitmq/history) и выбрать интересующую сборку
